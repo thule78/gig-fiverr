@@ -1,25 +1,54 @@
-<h2>Change your password</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+<section class="hero is-white">
+  <div class="hero-body">
+    <div class="container">
+      <div class="column is-centered">
+        <div class="column is-6-table is-6-desktop is-6-widescreen">
+          <div class="field">
+            <label class="title ">Change your password</label>
+          </div>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+          <div class="field">
+            <p class="control has-icons-left">
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "Password", class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+            <% end %>
+            </p>
+          </div>
+
+          <div class="field">
+            <p class="control has-icons-left">
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm new password", class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <%= f.submit "Change my password", class: class: "button is-warning" %>
+            </div>
+          </div>
+          <% end %>
+          <hr class="navbar-divider">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+
+
+
+

@@ -39,13 +39,11 @@
       <% if user_signed_in?%>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          Name
+          <%= current_user.email%>
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
-            Profile
-          </a>
+          <%= link_to "Profile", edit_user_registration_path, class: "navbar-item" %>
           <a class="navbar-item">
             Dashboard
           </a>
@@ -59,10 +57,8 @@
       <%else%>
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-warning">
-            Sign in
-          </a>
-          <%= link_to "Login", new_user_session_path, class: "button is-light" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "button is-warning" %>
+          <%= link_to "Log In", new_user_session_path, class: "button is-light" %>
         </div>
       </div>
       <%end%>

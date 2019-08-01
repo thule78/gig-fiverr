@@ -58,6 +58,9 @@
             <div class="control">
               <%= f.submit "Submit", class: "button is-warning" %>
             </div>
+            <div class="control">
+              <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "button is-info" %>
+            </div>
             <% end %>
           </div>
           <hr class="navbar-divider">

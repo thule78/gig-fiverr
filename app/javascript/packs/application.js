@@ -12,6 +12,17 @@ require("channels")
 
 window.Noty = require("noty")
 
+//jquery for user sidebar it not work because jquery seem not plugin to app, has to be fix
+//Aug-1-2019
+$(document).ready(()=>{
+  $('.toggle').on('click', (e) =>{
+      e.stopPropagation();
+      e.preventDefault();
+      $('#' + e.target.getAttribute('aria-controls')).toggleClass('hidden');
+
+    })
+})
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

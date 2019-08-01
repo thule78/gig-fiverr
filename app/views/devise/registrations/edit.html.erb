@@ -10,7 +10,7 @@
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="field">
             <p class="control has-icons-left">
-              <%= f.email_field :full_name,
+              <%= f.text_field :full_name,
               autofocus: true,
               autocomplete: "full_name",
               placeholder: "Full Name",
@@ -67,20 +67,6 @@
               </span>
             </p>
           </div>
-
-          <div class="field">
-            <i>(we need your current password to confirm your changes)</i>
-            <p class="control has-icons-left">
-            <%= f.password_field :current_password,
-                                  autocomplete: "current-password",
-                                  placeholder: "Current Password",
-                                  class: "input" %>
-              <span class="icon is-small is-left">
-                <i class="fas fa-key"></i>
-              </span>
-            </p>
-          </div>
-
           <div class="field is-grouped">
             <div class="control">
               <%= f.submit "Update", class: "button is-warning" %>

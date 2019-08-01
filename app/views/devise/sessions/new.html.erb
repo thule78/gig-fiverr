@@ -44,8 +44,13 @@
           </div>
           <% end %>
 
-          <div class="actions">
-            <%= f.submit "Log in", class: "button is-warning" %>
+          <div class="field is-grouped">
+            <div class="control">
+              <%= f.submit "Log in", class: "button is-warning" %>
+            </div>
+            <div class="control">
+              <%= link_to "Log in with Facebook", user_facebook_omniauth_authorize_path, class: "button is-info" %>
+            </div>
           </div>
           <% end %>
           <hr class="navbar-divider">

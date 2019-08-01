@@ -15,6 +15,8 @@ gem 'bulma-rails', '~> 0.7.4'
 gem 'bulma-extensions-rails', '~> 1.0.30'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'devise', '~> 4.6.1'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

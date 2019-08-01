@@ -13,7 +13,7 @@
                             <!-- Avatar -->
                             <div class="card-content is-horizontal-center is-flex">
                               <figure class="image is-128x128">
-
+                                <%= image_tag avatar_url(current_user), class: "is-rounded"%>
                               </figure>
                             </div>
 
@@ -21,12 +21,12 @@
 
                                 <!-- Upload Button -->
                                 <div class="content has-text-centered">
-                                  <p><%= current_user.full_name %></p>
+                                  <strong><%= current_user.full_name %></strong>
                                   <%= form_for :user, url:users_edit_url(@user), action: :update, method: :post do |f|%>
 
                                   <div class="file">
                                     <label class="button is-primary is-outlined is-medium is-fullwidth">
-                                      <%= f.file_field :avatar, class: "file-input", onChange: "this.form.submit();"%><i class="fas fa-upload"></i>  Upload Avatar
+                                      <%= f.file_field :avatar, class: "file-input", onChange: "this.form.submit();"%><i class="fas fa-upload"></i>&nbsp;&nbsp; Upload Avatar
                                     </label>
 
                                   </div>
@@ -59,10 +59,11 @@
                                   </div>
                                   <div class="content">
                                     <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: "user_form", class: "hidden"} do |f|%>
-                                  <div class="form-group">
+                                  <div class="field">
                                     <%= f.text_field :from, autofocus: true, autocomplete: "from", class: "input" %>
-                                    <a class="toggle button is-outlined is-medium is-fullwidth" aria-controls="user_form">Cancel</a>
-                                    <%= f.submit "Save", class: "btn btn-success" %>
+                                    <%= f.submit "Save", class: "button is-outlined is-primary" %>
+                                    <a class="toggle button is-outlined" aria-controls="user_form">Cancel</a>
+
                                   </div>
                                   <%end%>
 
@@ -81,10 +82,11 @@
                                   </div>
                                   <div class="content">
                                     <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: "user_status", class: "hidden"} do |f|%>
-                                  <div class="form-group">
-                                    <%= f.select(:status, options_for_select([["Online", true], ["Offline",false]]),{},{class: "select"})%>
-                                    <a class="button is-outlined is-medium is-fullwidth" aria-controls="user_status">Cancel</a>
-                                    <%= f.submit "Save", class: "btn btn-success" %>
+                                  <div class="field">
+                                    <%= f.select(:status, options_for_select([["Online", true], ["Offline",false]]),{},{class: "select"})%><br />
+                                    <%= f.submit "Save", class: "button is-primary is-outlined" %>
+                                    <a class="button is-outlined" aria-controls="user_status">Cancel</a>
+
                                   </div>
                                   <%end%>
 
@@ -116,10 +118,11 @@
                                   </div>
                                   <div class="content">
                                     <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: "user_about", class: "hidden"} do |f|%>
-                                  <div class="form-group">
+                                  <div class="field">
                                     <%= f.text_area :about, autofocus: true, autocomplete: "about", class: "input" %>
-                                    <a class="toggle btn btn-light" aria-controls="user_about">Cancel</a>
-                                    <%= f.submit "Save", class: "btn btn-success" %>
+                                    <%= f.submit "Save", class: "button is-primary is-outlined" %>
+                                    <a class="toggle button is-outlined" aria-controls="user_about">Cancel</a>
+
                                   </div>
                                   <%end%>
 
@@ -144,10 +147,11 @@
                                   </div>
                                   <div class="content">
                                     <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: "user_language", class: "hidden"} do |f|%>
-                                  <div class="form-group">
+                                  <div class="field">
                                     <%= f.text_field :language, autofocus: true, autocomplete: "language", class: "input" %>
-                                    <a class="toggle btn btn-light" aria-controls="user_language">Cancel</a>
-                                    <%= f.submit "Save", class: "btn btn-success" %>
+                                    <%= f.submit "Save", class: "button is-primary is-outlined" %>
+                                    <a class="toggle button is-outlined" aria-controls="user_language">Cancel</a>
+
                                   </div>
                                   <%end%>
 

@@ -5,7 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+
   validates :full_name, presence: true, length: {maximum: 50}
+
+  has_one_attached :avatar
 
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first

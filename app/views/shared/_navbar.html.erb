@@ -38,8 +38,15 @@
       </a>
       <% if user_signed_in?%>
       <div class="navbar-item has-dropdown is-hoverable">
+        <figure class="image is-48x48 navbar-item">
+          <%= image_tag avatar_url(current_user), class: "is-rounded"%>
+        </figure>
         <a class="navbar-link">
+          <%if current_user.full_name.nil? %>
           <%= current_user.email%>
+          <%else%>
+          <%= current_user.full_name%>
+          <%end%>
         </a>
 
         <div class="navbar-dropdown">
@@ -64,7 +71,7 @@
   </div>
 </nav>
 
-<nav class="navbar has-shadow">
+<nav class="navbar has-shadow" style="z-index: 2;">
   <div class="container">
     <div class="navbar">
       <%= link_to "Dashboard", dashboard_path, class: 'navbar-item'%>

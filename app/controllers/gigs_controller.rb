@@ -42,7 +42,7 @@ class GigsController < ApplicationController
   end
 
   def gig_params
-    params.require(:gig).permit(:title, :video, :active, :category_id, :has_single_pricing,
+    params.require(:gig).permit(:title, :video, :active, :category_id, :has_single_pricing, :description,
                                 pricings_attribute: [:id, :title, :description, :delivery_time, :price, :pricing_type])
 
   end

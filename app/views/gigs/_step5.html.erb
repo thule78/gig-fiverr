@@ -14,7 +14,7 @@
     <% if @step != 5 %>
       <%= f.submit 'Save & Continue', class: "button is-warning"%>
       <%else%>
-      <%= link_to 'Public', gig_path(@gig.id, gig:{active: true}, step: @step),
+      <%= link_to 'Publish', gig_path(@gig.id, gig:{active: true}, step: @step),
         method: :put,
         data: {confirm: "Do you want to publish this gig?"},
         class: "button is-warning"

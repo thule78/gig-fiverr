@@ -13,8 +13,10 @@ require('jquery')
 
 window.Noty = require("noty")
 
-//jquery for user sidebar it not work because jquery seem not plugin to app, has to be fix
-//Aug-1-2019
+//dropzone
+window.Dropzone = require("dropzone")
+
+//jquery for user sidebar
 $(document).ready(()=>{
   $('.toggle').on('click', (e) =>{
       e.stopPropagation();

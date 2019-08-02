@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  video: MyString
+  active: false
+  has_single_pricing: false
+  user: one
+  category: one
+
+two:
+  title: MyString
+  video: MyString
+  active: false
+  has_single_pricing: false
+  user: two
+  category: two

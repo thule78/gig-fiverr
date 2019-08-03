@@ -187,10 +187,62 @@
                 <div class="columns is-multiline">
 
                     <!-- Create New Gig -->
-                    <div class="column is-one-third has-text-centered"></div>
+                    <div class="column is-one-third has-text-centered">
+                      <%= link_to new_gig_path do%>
+                        <div class="card">
+
+                            <div class="card-image card-content is-horizontal-center is-flex ">
+                                <figure class="image is-128x128 ">
+                                    <%= image_tag 'plus.png'%>
+                                </figure>
+                            </div>
+
+                            <div class="card-content">
+                                <strong>Create a new gig</strong>
+                            </div>
+
+                        </div>
+                        <%end%>
+                    </div>
+
 
                     <!-- Sample Gig -->
-                    <div class="column is-one-third has-text-centered"></div>
+                    <% current_user.gigs.each do |gig|%>
+                    <div class="column is-one-third">
+
+                      <div class="card">
+                        <%= link_to gig_path(gig) do %>
+                          <div class="card-image">
+                            <figure class="image is-4by3">
+                              <%= image_tag gig_cover(gig)%>
+                            </figure>
+                          </div>
+
+                          <div class="card-content p-t-5 p-b-5">
+                            <p class="subtitle is-6 m-b-5"><%= gig.title%></p>
+                            <span class="star_review"><i class="fa fa-star"></i>
+                              4.8 <span class="has-text-primary">(23)</span>
+                            </span>
+                          </div>
+                        <%end%>
+                        <footer class="card-footer">
+                          <% basic_price = gig.pricings.find{ |p| p.pricing_type == 'basic'}%>
+                          <a class="has-text-danger is-block card-footer-item has-text-right">
+                            <% if !basic_price.nil? %>
+                            <span class="small-title">STARTING AT</span>
+                            <strong>$<%= basic_price.price %></strong>
+                            <%else%>
+                              <strong>
+                                <span class="small-title has-text-dark">No Pricing Yet</span>
+                              </strong>
+
+                            <%end%>
+                          </a>
+                          <%= link_to "Edit", edit_gig_path(gig), class: "card-footer-item  button is-warning"%>
+                        </footer>
+                      </div>
+                    </div>
+                    <%end%>
 
                 </div>
             </div>

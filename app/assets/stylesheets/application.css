@@ -17,6 +17,7 @@
 /* External libraries */
 @import "bulma";
 @import "bulma-extensions";
+@import "bulma-extensions/bulma-carousel/css/bulma-carousel.min";
 @import "noty/lib/noty";
 @import "noty/lib/themes/relax";
 @import "dropzone/dist/basic.css";

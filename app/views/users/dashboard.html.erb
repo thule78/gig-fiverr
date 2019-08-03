@@ -251,6 +251,18 @@
     </div>
 </section>
 
+<script>
+  //jquery for user sidebar Aug-2nd this not work even jquery works
+$(document).ready(()=>{
+  $('.toggle').on('click', (e) =>{
+      e.stopPropagation();
+      e.preventDefault();
+      $('#' + e.target.getAttribute('aria-controls')).toggleClass('hidden');
+
+    })
+})
+</script>
+
 
 
 

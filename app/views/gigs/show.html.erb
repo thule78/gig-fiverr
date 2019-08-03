@@ -11,21 +11,23 @@
                     <!-- Carousel -->
                     <div class="column is-full">
                       <div class="card">
-                        <div class="content">
-                          <p class="title is-4"><%= @gig.title%></p>
-                        </div>
-                        <hr>
-                        <div class="hero carousel" id="carousel-photo">
-                          <% @gig.photos.each do |photo| %>
+                        <div class="card-content">
+                          <div class="content">
+                            <p class="title is-4"><%= @gig.title%></p>
+                          </div>
+                          <hr>
+                          <div class="hero carousel" id="carousel-photo">
+                            <% @gig.photos.each do |photo| %>
                             <div class="carousel-item has-background image is-16by9">
                               <%= image_tag url_for(photo), class: "is-background", width: "100%"%>
                             </div>
-                          <%end%>
-                          <% if @gig.video.present? %>
+                            <%end%>
+                            <% if @gig.video.present? %>
                             <div class="video-container">
                               <iframe src="https://www.youtube.com/embed/<%= @gig.video %>" allowfullscreen></iframe>
                             </div>
-                          <%end%>
+                            <%end%>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -66,3 +68,10 @@
         </div>
     </div>
 </section>
+
+<script>
+  BulmaCarousel.attach('#carousel-photo', {
+    slidesToScroll: 1,
+    slidesToShow: 1
+  })
+</script>

@@ -8,28 +8,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
-
-//add noty
-
-window.Noty = require("noty")
-
-//dropzone
-window.Dropzone = require("dropzone")
-
-//bulma carousel
-window.BulmaCarousel = require("bulma-extensions/bulma-carousel/dist/bulma-carousel")
-
-//jquery for user sidebar Aug-2nd this not work even jquery works
-$(document).ready(()=>{
-  $('.toggle').on('click', (e) =>{
-      e.stopPropagation();
-      e.preventDefault();
-      $('#' + e.target.getAttribute('aria-controls')).toggleClass('hidden');
-
-    })
-})
-
-
+require("trix")
+require("@rails/actiontext")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -39,5 +19,17 @@ $(document).ready(()=>{
 // const imagePath = (name) => images(name, true)
 
 
-require("trix")
-require("@rails/actiontext")
+//add noty
+
+window.Noty = require("noty")
+
+//dropzone
+window.Dropzone = require("dropzone")
+
+//bulma carousel
+window.BulmaCarousel = require("bulma-extensions/bulma-carousel/dist//js/bulma-carousel")
+
+
+
+
+

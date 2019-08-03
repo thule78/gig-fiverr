@@ -16,7 +16,7 @@ window.Noty = require("noty")
 //dropzone
 window.Dropzone = require("dropzone")
 
-//jquery for user sidebar
+//jquery for user sidebar Aug-2nd this not work even jquery works
 $(document).ready(()=>{
   $('.toggle').on('click', (e) =>{
       e.stopPropagation();

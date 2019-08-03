@@ -22,7 +22,6 @@ class GigsController < ApplicationController
 
   def edit
     @categories = Category.all
-    @step = params[:step].to_i
   end
 
   def update
@@ -33,14 +32,14 @@ class GigsController < ApplicationController
           next;
         else
           if pricing[:title].blank? || pricing[:description].blank? || pricing[:delivery_time].blank? || pricing[:price].blank?
-            return direct_to request.referrer, flash:{error: "Invalid pricing"}
+            return redirect_to request.referrer, flash:{error: "Invalid pricing"}
           end
         end
       end
     end
 
     if @step == 3 && gig_params[:description].blank?
-      return direct_to request.referrer, flash:{error: "Description cannot be blank"}
+      return redirect_to request.referrer, flash:{error: "Description cannot be blank"}
     end
 
     if @step == 4 && @gig.photos.blank?
@@ -48,12 +47,12 @@ class GigsController < ApplicationController
     end
 
     if @step == 5
-      @gig.pricing.each do |pricing|
+      @gig.pricings.each do |pricing|
         if @gig.has_single_pricing && !pricing.basic?
           next;
         else
           if pricing[:title].blank? || pricing[:description].blank? || pricing[:delivery_time].blank? || pricing[:price].blank?
-            return direct_to edit_gig_path(@gig, step: 2), flash:{error: "You don't have any photos"}
+            return redirect_to edit_gig_path(@gig, step: 2), flash:{error: "Invalid Pricing"}
           end
         end
       end
@@ -83,7 +82,7 @@ class GigsController < ApplicationController
 
   def upload_photo
     @gig.photos.attach(params[:file])
-    render json:{ success: true}
+    render json: { success: true}
   end
 
   def delete_photo

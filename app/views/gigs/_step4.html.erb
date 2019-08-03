@@ -16,10 +16,9 @@
             <div class="card-image">
               <%= link_to "Remove", delete_photo_gig_url(photo_id: photo.id, id: @gig.id, step:@step),
                 method: :delete,
-                data: {confimr: "Are you sure"},
-                class: "delete delete-fil is-pulled-right",
-                style: "z-index: 100"
-              %>
+                data: { confirm: "Do you want to remove this photo? " },
+                class: "delete delete-file is-pulled-right",
+                style: "z-index: 100" %>
               <figure class="image is-4by3">
                 <%= image_tag url_for(photo)%>
               </figure>
@@ -35,7 +34,7 @@
   Dropzone.options.myDropzone = {
     paramName: "file",
     maxFilesize: 2,
-    acceptFiles: "image/*",
+    acceptedFiles: "image/*",
     init: function(){
       this.on('complete', function(file){
         location.reload();

@@ -12,4 +12,12 @@
       <%= f.check_box :has_single_pricing, class: "checkbox", onchange:"this.form.submit();"%> Has Single Price
     </label>
   </div>
+  <div class="field is-grouped is-grouped-centered m-t-25">
+    <p class="control <%= 'is-hidden' if @step <= 1 %>">
+      <%= link_to 'Back', edit_gig_path(@gig, step: @step -1), class: 'button is-outlined'%>
+    </p>
+    <p class="control">
+      <%= f.submit 'Save & Continue', class: "button is-warning"%>
+    </p>
+  </div>
 </div>

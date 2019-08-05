@@ -46,7 +46,7 @@
         <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id]}), class: "select is-warning") %>
       </div>
       <div class="field is-group is-grouped-centered m-t-25">
-        <%= f.submit "Save & Continue", class: "button is-primary is-outlined"%>
+        <%= f.submit "Save & Continue", class: "button is-warning"%>
         <a href="" class="button is-outlined">Reset</a>
       </div>
       <%end%>

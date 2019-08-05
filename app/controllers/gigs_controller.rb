@@ -39,6 +39,7 @@ class GigsController < ApplicationController
       end
     end
 
+
     if @step == 3 && gig_params[:description].blank?
       return redirect_to request.referrer, flash:{error: "Description cannot be blank"}
     end
@@ -57,12 +58,12 @@ class GigsController < ApplicationController
           end
         end
       end
-    end
 
-    if @gig.description.blank?
-      return redirect_to edit_gig_path(@gig, step: 3), flash:{error: "Description cannot be blank"}
-    elsif @gig.photos.blank?
-      return redirect_to edit_gig_path(@gig, step: 4), flash:{error: "You don't have any photos"}
+      if @gig.description.blank?
+        return redirect_to edit_gig_path(@gig, step: 3), flash:{error: "Description cannot be blank"}
+      elsif @gig.photos.blank?
+        return redirect_to edit_gig_path(@gig, step: 4), flash:{error: "You don't have any photos"}
+      end
     end
 
     if @gig.update(gig_params)
@@ -118,7 +119,7 @@ class GigsController < ApplicationController
 
   def gig_params
     params.require(:gig).permit(:title, :video, :active, :category_id, :has_single_pricing, :description,
-                                pricings_attribute: [:id, :title, :description, :delivery_time, :price, :pricing_type])
+                                pricings_attributes: [:id, :title, :description, :delivery_time, :price, :pricing_type])
 
   end
 end

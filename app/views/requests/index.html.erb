@@ -1,0 +1,43 @@
+<section class="section">
+  <div class="container">
+    <%= link_to "Post new request", new_request_path, class: "button is-warning"%>
+    <p class="title has-text-centered">
+      Manage requests
+    </p>
+
+    <table class="table is-fullwidth">
+      <thead class="is-centered">
+        <tr>
+          <td>Date</td>
+          <td>Request</td>
+          <td class="has-text-right">Offers</td>
+          <td class="has-text-right">Action</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @requests.blank?%>
+          <tr>
+            <td colspan="4" class="has-text-centered"><h1>Nothing to show here</h1></td>
+          </tr>
+        <% end %>
+        <% @requests.each do |r|%>
+          <tr>
+            <td><%= r.created_at.strftime('%d, %b, %Y')%></td>
+            <td><%= link_to r.title, request_path(r)%></td>
+            <td class="has-text-centered">nothing yet</td>
+            <td class="has-text-right">
+              <%= link_to edit_request_path(r), class: "m-r-5" do%>
+                <span class="icon has-text-primary"><i class="fas fa-edit fa-lg"></i></span>
+              <% end %>
+              <%= link_to r, method: :delete, data:{confirm: "Do you want to delete this? "} do%>
+                <span class="icon has-text-danger">
+                  <i class="fas fa-trash-alt fa-lg"></i>
+                </span>
+              <%end%>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</section>

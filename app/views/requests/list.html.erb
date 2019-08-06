@@ -47,7 +47,7 @@
                   </label>
                 <%end%>
               </td>
-              <td class="has-text-centered">just dummy text</td>
+              <td class="has-text-centered"><%= r.offers.count %></td>
               <td class="has-text-right"><%= pluralize(r.delivery, 'day')%></td>
               <td class="has-text-right">$<%= r.budget %></td>
             </tr>

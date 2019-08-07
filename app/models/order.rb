@@ -4,5 +4,7 @@ class Order < ApplicationRecord
   belongs_to :seller, class_name: "User"
   belongs_to :request, required: false
 
+  has_many :reviews
+
   enum status: [:inprogress, :completed]
 end

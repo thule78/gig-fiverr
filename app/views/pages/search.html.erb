@@ -40,10 +40,12 @@
                     <div class="column is-full">
                         <div class="card">
                             <div class="card-content">
+                              <%= form_tag '', method: :get do %>
+                                <%= hidden_field_tag 'category', @category ? @category.id : '' %>
 
                                 <!-- Title Search -->
                                 <div class="field">
-                                    <input class="input" type="text" placeholder="Search by title">
+                                    <%= text_field_tag 'q', @q || '', class: "input", placeholder: "Search by title"%>
                                 </div>
                                 <hr/>
 
@@ -81,6 +83,7 @@
                                 <div class="field m-t-20">
                                     <button  class="button is-danger is-fullwidth" type="submit"> Apply</button>
                                 </div>
+                                <%end%>
 
                                 <div class="field m-t-10">
                                     <button  class="button is-black is-outlined is-fullwidth" type="submit"> Clear All Filters</button>
@@ -97,6 +100,8 @@
 
                 <!-- List of gigs -->
                 <div class="columns is-multiline">
+
+                    <%= render partial: 'shared/gigs', object: @gigs %>
 
                 </div>
 

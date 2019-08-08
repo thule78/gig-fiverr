@@ -38,7 +38,7 @@
        <%= link_to "All Gigs", search_path, class: "navbar-item"%>
       <% if user_signed_in?%>
       <div class="navbar-item has-dropdown is-hoverable">
-        <figure class="image is-48x48 navbar-item">
+        <figure class="image is-48x48  navbar-item avatar <%= current_user.status ? "online" : "offline" %>">
           <%= image_tag avatar_url(current_user), class: "is-rounded"%>
         </figure>
         <a class="navbar-link">

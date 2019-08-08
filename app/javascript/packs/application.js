@@ -31,6 +31,14 @@ window.Dropzone = require("dropzone")
 window.BulmaCarousel = require("bulma-extensions/bulma-carousel/dist//js/bulma-carousel")
 
 
+ //jquery for user sidebar Aug-2nd this not work even jquery works
+$(document).ready(()=>{
+  $('.toggle').on('click', (e) =>{
+      e.stopPropagation();
+      e.preventDefault();
+      $('#' + e.target.getAttribute('aria-controls')).toggleClass('hidden');
 
+    })
+})
 
 

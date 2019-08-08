@@ -80,6 +80,32 @@ $sides: (top, bottom, left, right);
   background-size: cover;
 }
 
+.avatar {
+  position: relative;
+  display: inline-block;
+
+  &::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  border: 1px solid white;
+  }
+
+  &.online:before {
+    background-color: #fd7e14;
+  }
+
+  &.offline:before {
+    background-color: #5a6268;
+  }
+}
+
+
+
 
 
 

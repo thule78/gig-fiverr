@@ -17,6 +17,7 @@ gem 'font-awesome-sass', '~> 5.6.1'
 gem 'devise', '~> 4.6.1'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'kaminari'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

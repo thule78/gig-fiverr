@@ -28,8 +28,9 @@
             <%= image_tag avatar_url(gig.user), class: "is-rounded"%>
           </figure>
         <% end %>
-
-          <%= link_to "Edit", edit_gig_path(gig), class: "has-text-dark is-block card-footer-item has-text-centered"%>
+        <span class="is-block card-footer-item <%= 'is-hidden' if gig.user.id != current_user.id %>">
+          <%= link_to "Edit", edit_gig_path(gig), class: "has-text-dark  has-text-centered"%>
+        </span>
 
       </footer>
     </div>

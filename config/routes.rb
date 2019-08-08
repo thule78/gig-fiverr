@@ -5,7 +5,7 @@ Rails.application.routes.draw do
             controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registration: 'users/registration' }
   root to: 'pages#home'
   get '/dashboard', to: 'users#dashboard'
-  get 'users/:id', to: 'users#show'
+  get 'users/:id', to: 'users#show', as: 'user'
   get '/selling_orders', to: 'orders#selling_orders'
   get '/buying_orders', to: 'orders#buying_orders'
   get '/all-requests', to: 'requests#list'

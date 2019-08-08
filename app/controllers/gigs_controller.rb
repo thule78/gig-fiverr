@@ -15,9 +15,9 @@ class GigsController < ApplicationController
 
     if @gig.save
       @gig.pricings.create(Pricing.pricing_types.values.map{|x| {pricing_type: x}})
-      redirect_to edit_gig_path(@gig), notice: "Save..."
+      return redirect_to edit_gig_path(@gig), notice: "Save..."
     else
-      redirect_to request.referrer, flash: {error: @gig.errors.full_messages}
+      return redirect_to request.referrer, flash: {error: @gig.errors.full_messages}
     end
   end
 
@@ -73,9 +73,9 @@ class GigsController < ApplicationController
     end
 
     if @step < 5
-      redirect_to edit_gig_path(@gig, step: @step + 1)
+      return redirect_to edit_gig_path(@gig, step: @step + 1)
     else
-      redirect_to dashboard_path
+      return redirect_to dashboard_path
     end
   end
 
@@ -91,7 +91,7 @@ class GigsController < ApplicationController
   def delete_photo
     @image = ActiveStorage::Attachment.find(params[:photo_id])
     @image.purge
-    redirect_to edit_gig_path(@gig, step: 4)
+    return redirect_to edit_gig_path(@gig, step: 4)
   end
 
   private

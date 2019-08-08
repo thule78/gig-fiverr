@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
     else
       flash[:alert] = "Invalid order"
     end
-    redirect_to request.referrer
+    return redirect_to request.referrer
   end
 
   private

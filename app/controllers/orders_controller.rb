@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
       flash[:alert] = "Price is incorrect"
     end
 
-    redirect_to request.referrer
+    return redirect_to request.referrer
   end
 
   def selling_orders
@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
       else
         flash[:alert] = "Something went wrong..."
       end
-      redirect_to request.referrer
+      return redirect_to request.referrer
     end
   end
 

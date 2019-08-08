@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "Cannot update.."
     end
-    redirect_to dashboard_path
+    return redirect_to dashboard_path
   end
 
   private

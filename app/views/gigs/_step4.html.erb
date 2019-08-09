@@ -10,7 +10,7 @@
         <div class="dropzone" id="myDropzone" action="/gigs/<%= @gig.id%>/upload_photo"></div>
       </div>
       <div class="columns is-multiline" style: width: 100%>
-        <%= @gig.photos.each do |photo| %>
+        <% @gig.photos.each do |photo| %>
         <div class="column is-one-fifth">
           <div class="card is-image">
             <div class="card-image">

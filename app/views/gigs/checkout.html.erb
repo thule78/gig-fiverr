@@ -1,0 +1,100 @@
+<section class="section">
+  <div class="container">
+    <%= form_with model: [@gig, @gig.orders.new] do |f|%>
+      <div class="columns">
+        <!--Left Side-->
+          <div class="column is-two-thirds">
+            <div class="columns is-multiline">
+              <div class="column is-full">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="content has-text-centered">
+                      <p class="title is-5">Payment Options</p>
+                    </div>
+                    <hr />
+                    <div class="content">
+
+                      <% @stripe_customer.sources.each do |payment| %>
+                      <div class="control">
+                        <%= radio_button_tag 'payment', payment.id, checked: true %>
+                        <span class="m-l-10">
+                          <%= payment.brand %> <%= "Card: **** **** ****" + payment.last4%>
+                        </span>
+                      </div>
+                      <% end %>
+                      <div class="control m-t-20">
+                        <%= radio_button_tag 'payment', 'system'%>
+                        <span class="m-l-10">
+                          Your System Wallet
+                          (<strong class="has-text-success"><%= current_user.wallet %></strong>)
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        <!--Right Side-->
+        <div class="column">
+          <div class="columns is-multiline">
+            <div class="card">
+              <div class="card-content">
+                <div class="content">
+                  <p class="title is-5">
+                    Summary
+                  </p>
+                  <hr>
+                  <article class="media">
+                    <div class="media-content">
+                      <figure class="image is-80x80">
+                        <%= image_tag gig_cover(@gig)%>
+                      </figure>
+                    </div>
+                    <div class="media-right">
+                      <strong><%= @gig.title%></strong>
+                    </div>
+                  </article>
+                  <article class="media">
+                    <div class="media-content">
+                      <strong>Subtotal: </strong>
+                    </div>
+                    <div class="media-right">
+                      $<%= '%.2f' % (@pricing.price)%>
+                    </div>
+                  </article>
+                  <article class="media">
+                    <div class="media-content">
+                      <strong>Service fee (10%)</strong>
+                    </div>
+                    <div class="media-right">
+                      $<%= '%.2f' % (@pricing.price * 0.1) %>
+                    </div>
+                  </article>
+                  <article class="media">
+                    <div class="media-content">
+                      <strong>Total</strong>
+                    </div>
+                    <div class="media-right">
+                      $<%= '%.2f' % (@pricing.price * 1.1) %>
+                    </div>
+                  </article>
+                  <article class="media">
+                    <div class="media-content">
+                      <strong>Total delivery time</strong>
+                    </div>
+                    <div class="media-right">
+                      <%= pluralize(@pricing.delivery_time, 'day')%>
+                    </div>
+                  </article>
+                  <%= f.submit "Place Your Order", class: "button is-fullwidth is-warning", data: {confirm: "Please confirm your order"}%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

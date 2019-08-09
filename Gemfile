@@ -18,6 +18,7 @@ gem 'devise', '~> 4.6.1'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'kaminari'
+gem 'stripe', '=4.18.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -3,13 +3,5 @@
     <label for="" class="label">Description</label>
     <%= f.rich_text_area :description, rows: 50, cols: 50 %>
   </div>
-  <div class="field is-grouped is-grouped-centered m-t-25">
-    <p class="control <%= 'is-hidden' if @step <= 1 %>">
-      <%= link_to 'Back', edit_gig_path(@gig, step: @step -1), class: 'button is-outlined'%>
-    </p>
-    <p class="control">
-      <%= f.submit 'Save & Continue', class: "button is-warning"%>
-    </p>
-  </div>
 </div>
 

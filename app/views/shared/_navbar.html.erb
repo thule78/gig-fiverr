@@ -117,12 +117,8 @@
             Setting
           </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item">
-              Payment Method
-            </a>
-            <a class="navbar-item">
-              Payout Method
-            </a>
+            <%= link_to "Payment Method", setting_payment_path, class: "navbar-item"%>
+            <%= link_to "Payout Method", setting_payout_path, class: "navbar-item"%>
           </div>
         </div>
     </div>

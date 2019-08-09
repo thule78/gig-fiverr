@@ -57,8 +57,17 @@ class UsersController < ApplicationController
       flash[:alert] = "Invalid card"
     end
     return redirect_to request.referrer
-  rescue Stripe::CardError => e
-    flash[:alert] = e.message
+    rescue Stripe::CardError => e
+      flash[:alert] = e.message
+      return redirect_to request.referrer
+  end
+
+  def update_payout
+    if current_user.update(paypal: params[:paypal])
+      flash[:notice] = "Update payout successfully"
+    else
+      flas[:alert] = "Something went wrong"
+    end
     return redirect_to request.referrer
   end
 

@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     path_access_token = "https://graph.accountkit.com/v1.1/access_token?" +
                         "grant_type=authorization_code" +
                         "&code=#{params[:code]}" +
-                        "&access_token=AA|#{facebook_id}|#{"facebook_secret"}";
+                        "&access_token=AA|#{ENV['FACEBOOK_APP_ID']}|#{ENV['FACEBOOK_API_SECRET']}";
     response = Net::HTTP.get(URI.parse(path_access_token))
     response = JSON.parse(response)
     if response['access_token']

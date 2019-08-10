@@ -1,6 +1,7 @@
 <section class="section">
   <div class="container">
     <%= form_with model: [@gig, @gig.orders.new] do |f|%>
+      <%= hidden_field_tag 'pricing_type', @pricing.pricing_type %>
       <div class="columns">
         <!--Left Side-->
           <div class="column is-two-thirds">
@@ -26,7 +27,7 @@
                         <%= radio_button_tag 'payment', 'system'%>
                         <span class="m-l-10">
                           Your System Wallet
-                          (<strong class="has-text-success"><%= current_user.wallet %></strong>)
+                          ($ <strong class="has-text-success"><%= current_user.wallet %></strong>)
                         </span>
                       </div>
                     </div>
@@ -58,10 +59,10 @@
                   </article>
                   <article class="media">
                     <div class="media-content">
-                      <strong>Subtotal: </strong>
+                      <strong>Subtotal </strong>
                     </div>
                     <div class="media-right">
-                      $<%= '%.2f' % (@pricing.price)%>
+                      $<%= '%.2f' % @pricing.price%>
                     </div>
                   </article>
                   <article class="media">

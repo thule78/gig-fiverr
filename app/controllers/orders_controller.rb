@@ -49,8 +49,10 @@ class OrdersController < ApplicationController
     order.amount = pricing.price * 1.1
 
     amount = pricing.price * 1.1
+
     if params[:payment].blank?
       flash[:alert] = "No payment selected"
+      return false
     elsif params[:payment] == "system"
       if amount > current_user.wallet
         flash[:alert] = "Not enought money"
@@ -60,58 +62,47 @@ class OrdersController < ApplicationController
           current_user.update(wallet: current_user.wallet - amount)
           gig.user.update!(wallet: gig.user.wallet + pricing.price)
           Transaction.create! status: Transaction.statuses[:approved],
-                              transaction_type: Transaction.transaction_types[:trans]
-                              source_type: Transaction.source_types[:system]
+                              transaction_type: Transaction.transaction_types[:trans],
+                              source_type: Transaction.source_types[:system],
                               buyer: current_user,
                               seller: gig.user,
-                              amount: amount
+                              amount: amount,
                               gig: gig
-          order.save
+            order.save
         end
-         flash[:notice] = "Your order create successfully"
-        end
-      else
-        charge = Stripe::Charge.create({
-          amount: (amount * 100).to_i,
-          currency: 'usd'
-          customer: current_user,
-          source: params[:payment]
-        })
-        if charge.paid
-          ActiveRecord::Base.transaction do
+        flash[:notice] = "Your order create successfully"
+        return true
+      end
+    else
+      charge = Stripe::Charge.create({
+        amount: (amount * 100).to_i,
+        currency: 'usd'
+        customer: current_user.stripe_id,
+        source: params[:payment]
+      })
+      if charge.paid
+        ActiveRecord::Base.transaction do
           gig.user.update!(wallet: gig.user.wallet + pricing.price)
           Transaction.create! status: Transaction.statuses[:approved],
-                              transaction_type: Transaction.transaction_types[:trans]
-                              source_type: Transaction.source_types[:system]
+                              transaction_type: Transaction.transaction_types[:trans],
+                              source_type: Transaction.source_types[:stripe],
                               buyer: current_user,
                               seller: gig.user,
-                              amount: amount
+                              amount: amount,
                               gig: gig
           order.save
         end
-         flash[:notice] = "Your order create successfully"
-         return true
-        end
-        flash[:alert] = "Invalid card"
-        return false
+        flash[:notice] = "Your order create successfully"
+        return true
       end
+      flash[:alert] = "Invalid card"
+      return false
+    end
     rescue  ActiveRecord::RecordInvalid
       flash[:alert] = "Something wnet wrong"
       return false
-      end
-
-
     end
-
-    if order.save
-      flash[:notice] = "Your order created successfully"
-    else
-      flash[:alert] = order.errors.full_messages.join(', ')
-    end
-
   end
-
-
 end
 
 

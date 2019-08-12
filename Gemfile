@@ -22,6 +22,7 @@ gem 'stripe', '=4.18.1'
 gem 'trestle', '=0.8.12'
 gem 'trestle-auth', '=0.2.5'
 gem 'trestle-search', '=0.3.0'
+gem 'trestle-tinymce', '=0.1.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

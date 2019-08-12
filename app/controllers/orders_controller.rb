@@ -59,7 +59,7 @@ class OrdersController < ApplicationController
         return false
       else
         ActiveRecord::Base.transaction do
-          current_user.update(wallet: current_user.wallet - amount)
+          current_user.update!(wallet: current_user.wallet - amount)
           gig.user.update!(wallet: gig.user.wallet + pricing.price)
           Transaction.create! status: Transaction.statuses[:approved],
                               transaction_type: Transaction.transaction_types[:trans],
@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
     else
       charge = Stripe::Charge.create({
         amount: (amount * 100).to_i,
-        currency: 'usd'
+        currency: 'usd',
         customer: current_user.stripe_id,
         source: params[:payment]
       })
@@ -102,7 +102,6 @@ class OrdersController < ApplicationController
       flash[:alert] = "Something wnet wrong"
       return false
     end
-  end
 end
 
 

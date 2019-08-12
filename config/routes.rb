@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/settings/payment', to: 'users#payment', as: 'setting_payment'
   get '/settings/payout', to: 'users#payout', as: 'setting_payout'
   get '/gigs/:id/checkout/:pricing_type', to: 'gigs#checkout', as: 'checkout'
+  get '/earnings', to: 'users#earnings', as: 'earnings'
 
   post '/users/edit', to: 'users#update'
   post '/offers', to: 'offers#create'
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
   post '/users/edit_phone', to: 'users#callback_phone'
   post '/settings/payment', to: 'users#update_payment', as: 'update_payment'
   post '/settings/payout', to: 'users#update_payout', as: 'update_payout'
+  post  '/users/withdraw', to: 'users#withdraw', as: 'withdraw'
+
   put '/orders/:id/complete', to: 'orders#complete', as: 'complete_order'
   put '/offers/:id/accept', to: 'offers#accept', as: 'accept_offer'
   put '/offers/:id/reject', to: 'offers#reject', as: 'reject_offer'

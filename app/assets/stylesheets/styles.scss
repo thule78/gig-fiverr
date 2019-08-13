@@ -114,6 +114,22 @@ $sides: (top, bottom, left, right);
   background-color: #bfbfbf;
 }
 
+.fc-content {
+  height: 40px;
+}
+
+.fc-event {
+  border: none !important;
+}
+
+.fc-title {
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  top: 8px;
+  left: 20px;
+}
+
 
 
 

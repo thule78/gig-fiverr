@@ -20,7 +20,7 @@ class PagesController < ApplicationController
 
 
     query_condition = []
-    query_condition[0] = "gigs.active = false " #in lessons gigs.active = true, but since we set it default: false
+    query_condition[0] = "gigs.active = true " #in lessons gigs.active = true, but since we set it default: false
     query_condition[0] += "AND ((gigs.has_single_pricing = true AND pricings.pricing_type = 0) OR (gigs.has_single_pricing = false))"
 
     if !@q.blank?

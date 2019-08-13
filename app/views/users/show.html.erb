@@ -22,6 +22,9 @@
                                 <!-- Upload Button -->
                                 <div class="content has-text-centered">
                                   <strong><%= @user.full_name %></strong>
+                                  <% if current_user.id != @user.id %>
+                                  <a href="" class="button is-outlined is-fullwidth toggle-contact">Contact Me</a>
+                                  <% end %>
                                 </div>
                                 <hr class="h-10">
 

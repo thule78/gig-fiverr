@@ -5,6 +5,7 @@ Rails.application.routes.draw do
             path_names: {sign_up: 'register', sign_in: 'login', edit: 'profile', sign_out: 'logout'},
             controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registration: 'users/registration' }
   root to: 'pages#home'
+
   get '/dashboard', to: 'users#dashboard'
   get 'users/:id', to: 'users#show', as: 'user'
   get '/selling_orders', to: 'orders#selling_orders'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   get '/request_offers/:id', to: 'requests#offers', as: 'request_offers'
   get '/my_offers', to: 'requests#my_offers'
   get '/search', to: 'pages#search'
+  get '/calendar', to: 'pages#calendar'
   get '/settings/payment', to: 'users#payment', as: 'setting_payment'
   get '/settings/payout', to: 'users#payout', as: 'setting_payout'
   get '/gigs/:id/checkout/:pricing_type', to: 'gigs#checkout', as: 'checkout'

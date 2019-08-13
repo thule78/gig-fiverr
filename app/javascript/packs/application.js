@@ -30,6 +30,13 @@ window.Dropzone = require("dropzone")
 //bulma carousel
 window.BulmaCarousel = require("bulma-extensions/bulma-carousel/dist//js/bulma-carousel")
 
+//calendar
+window.Calendar = require("@fullcalendar/core").Calendar;
+window.DayGridPlugin = require("@fullcalendar/daygrid").default;
+window.ListPlugin = require("@fullcalendar/list").default;
+
+
+
 
  //jquery for user sidebar Aug-2nd this not work even jquery works
 $(document).ready(()=>{

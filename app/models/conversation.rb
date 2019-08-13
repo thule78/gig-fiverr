@@ -9,6 +9,5 @@ class Conversation < ApplicationRecord
     else
       return Message.new updated_at: Time.now
     end
-
   end
 end

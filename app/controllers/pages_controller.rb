@@ -69,7 +69,10 @@ class PagesController < ApplicationController
               Order.statuses[:inprogress],
               first_of_month,
               end_of_month)
+  end
 
+  def plans
+    @plans = Stripe::Plan.list(product: 'prod_FcR2K4KQfHMA1b')
 
   end
 end

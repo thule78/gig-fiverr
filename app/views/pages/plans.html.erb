@@ -6,8 +6,8 @@
     <div class="pricing-table m-t-20 m-l-50 m-r-50">
       <% @plans.data.each do |p|%>
       <div class="pricing-plan
-        <%= 'is-success' if p.amount == 1000%>
-        <%= 'is-primary' if p.amount == 700%>
+        <%= 'is-primary' if p.amount == 1000%>
+        <%= 'is-success' if p.amount == 700%>
         <%= 'is-warning' if p.amount == 500%>">
         <div class="plan-header"><%= p.nickname %></div>
         <div class="plan-price">
@@ -21,7 +21,10 @@
           </div>
         </div>
         <div class="plan-footer">
-          <button class="button is-fullwidth">Choose</button>
+          <%= form_with url: subscribe_url do |f| %>
+           <%= f.hidden_field :p_id, value: p.id%>
+            <%= f.submit "Choose", class: "button is-fullwidth"%>
+          <% end %>
         </div>
       </div>
       <% end %>

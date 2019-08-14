@@ -67,10 +67,10 @@
                   </article>
                   <article class="media">
                     <div class="media-content">
-                      <strong>Service fee (10%)</strong>
+                      <strong>Service fee (<%= (@rate * 100).to_i %>%)</strong>
                     </div>
                     <div class="media-right">
-                      $<%= '%.2f' % (@pricing.price * 0.1) %>
+                      $<%= '%.2f' % (@pricing.price * @rate) %>
                     </div>
                   </article>
                   <article class="media">
@@ -78,7 +78,7 @@
                       <strong>Total</strong>
                     </div>
                     <div class="media-right">
-                      $<%= '%.2f' % (@pricing.price * 1.1) %>
+                      $<%= '%.2f' % (@pricing.price * (@rate + 1)) %>
                     </div>
                   </article>
                   <article class="media">

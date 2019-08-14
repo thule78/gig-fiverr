@@ -73,6 +73,7 @@
                                 <hr class="h-10">
 
                                 <!-- Online Status -->
+                                <% if @subscription.present? %>
                                 <article>
                                   <div class="media">
                                     <div class="media-content">Status</div>
@@ -93,7 +94,24 @@
 
                                   </div>
                                 </article>
+                                <hr class="h-10">
+                                <!-- subscription -->
+                                <article>
+                                  <div class="media">
+                                    <div class="media-content">Subscription</div>
+                                    <div class="media-right">
+                                      <strong><% if @plan %><%= @plan.nickname %><% end %></strong><i class="toggle far fa-edit" aria-controls="user_subscription"></i>
+                                    </div>
+                                  </div>
+                                  <div class="content">
+                                    <%= form_with url: remove_subscripton_path, method: :delete, html: {id: 'user_subscription', class: 'is-hidden'} do %>
+                                      <small>Expire at: <%= @subscription.expried_at %></small>
+                                      <%= f.submit "Cacel my Subscription", class: "button is-warning is-fullwidth"%>
+                                    <% end %>
 
+                                  </div>
+                                </article>
+                                <% end %>
                             </div>
                         </div>
                     </div>

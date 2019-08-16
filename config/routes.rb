@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users,
             path: '',
             path_names: {sign_up: 'register', sign_in: 'login', edit: 'profile', sign_out: 'logout'},
-            controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registration: 'users/registration' }
+            controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registration' }
   root to: 'pages#home'
 
   get '/dashboard', to: 'users#dashboard'

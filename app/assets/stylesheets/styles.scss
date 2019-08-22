@@ -50,6 +50,10 @@ $sides: (top, bottom, left, right);
   background: white;
 }
 
+.carousel {
+  overflow: hidden;
+}
+
 .dropzone .dz-message {
   font-weight: 400;
 }

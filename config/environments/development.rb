@@ -72,9 +72,7 @@ Rails.application.configure do
      ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
 
    end
-   config.hosts = nil
-   config.web_console.whiny_requests = false
-   config.web_console.whitelisted_ips = '118.69.36.67'
+
 
 
 end

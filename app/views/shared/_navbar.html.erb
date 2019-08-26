@@ -36,7 +36,7 @@
     <div class="navbar-end">
        <%= link_to "Post Gig", new_gig_path, class: "navbar-item"%>
        <%= link_to "All Gigs", search_path, class: "navbar-item"%>
-       <%= link_to "Pricing", plans_path, class: "navbar-item"%>
+       <%= link_to "Membership", plans_path, class: "navbar-item"%>
       <% if user_signed_in?%>
       <div class="navbar-item has-dropdown is-hoverable">
         <figure class="image is-48x48  navbar-item avatar <%= current_user.status ? "online" : "offline" %>">

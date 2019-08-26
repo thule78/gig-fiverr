@@ -25,8 +25,49 @@
     </div>
   </div>
 </section>
+<section class="m-t-50">
+  <div class="container">
+    <h1 class="title is-4 p-l-10">Newest Gigs</h1>
+    <div class="row">
+      <div class="columns is-multiline">
+        <% Gig.all.last(6).each do |gig|%>
+        <div class="column is-one-third">
+          <div class="card">
+            <%= link_to gig_path(gig) do %>
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <%= image_tag gig_cover(gig)%>
+              </figure>
+            </div>
 
-<section class="m-t-100">
+            <div class="card-content p-t-5 p-b-5">
+              <p class="subtitle is-6 m-b-5"><%= gig.title.truncate(25)%></p>
+              <span class="star-review"><i class="fa fa-star"></i>
+               <%= gig.average_rating %> <span class="has-text-primary"><%= gig.reviews.count %></span>
+             </span>
+            </div>
+            <%end%>
+            <footer class="card-footer">
+
+              <a class="has-text-danger is-block card-footer-item has-text-centered">
+                <span class="small-title">STARTING AT</span>
+                <strong>$<%= gig.pricings.first.price %></strong>
+              </a>
+              <%= link_to user_path(gig.user), class: "card-footer-item" do %>
+              <figure class="image is-32x32">
+                <%= image_tag avatar_url(gig.user), class: "is-rounded"%>
+              </figure>
+              <% end %>
+            </footer>
+          </div>
+        </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="m-t-50">
   <div class="container">
     <h1 class="title is-4 p-l-10">Popular Professional Services</h1>
     <div id="carousel-category" class="hero carousel">

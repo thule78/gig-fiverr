@@ -111,7 +111,7 @@ class GigsController < ApplicationController
       @gig = Gig.find(params[:id])
       @pricing = @gig.pricings.find_by(pricing_type: params[:pricing_type])
     else
-      redirect_to settings_payment_path, alert: "Please add yor card first"
+      redirect_to setting_payment_path, alert: "Please add yor card first"
     end
 
   end

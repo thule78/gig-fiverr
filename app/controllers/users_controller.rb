@@ -147,6 +147,10 @@ class UsersController < ApplicationController
 
   end
 
+  def reviews
+    @reviews = Review.where(params[:user_id])
+  end
+
   private
   def current_user_params
     params.require(:user).permit(:from, :about, :status, :language, :full_name, :avatar)

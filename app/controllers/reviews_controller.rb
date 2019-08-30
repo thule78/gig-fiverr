@@ -1,5 +1,8 @@
 class ReviewsController < ApplicationController
 
+  def index
+    @reviews = Review.where(params[:user_id])
+  end
   def create
     order = Order.find(review_params[:order_id])
 

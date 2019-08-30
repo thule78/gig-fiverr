@@ -142,25 +142,30 @@
                   </div>
                   <div class="card-content">
                     <!--sample reviews-->
-                    <article calss="media">
-                      <figure class="media-left">
-                        <p class="image is-64x64">
-                        <%= image_tag avatar_url(@user), class: "is-rounded "%>
-                        </p>
-                      </figure>
-                      <div class="media-content">
-                        <div class="content">
-                          <p>
-                            <strong>Alex</strong><br />
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eius aliquid soluta eligendi dolor hic aliquam quae nisi nemo suscipit, quaerat culpa similique dolores expedita aspernatur, nam repellendus sequi perferendis.
-                          </p>
-                          <small>20m</small>
-                        </div>
-                      </div>
-                      <div class="media-right">
-                        <span class="star-review"><i class="fas fa-star"></i></span>
-                      </div>
-                    </article>
+                    <% Review.all.each do |r| %>
+                      <article class="media">
+                          <figure class="media-left">
+                              <p class="image is-64x64">
+                                  <%= image_tag avatar_url(r.buyer), class: "is-rounded" %>
+                              </p>
+                          </figure>
+
+                          <div class="media-content">
+                              <div class="content">
+                                  <p>
+                                      <strong><%= r.buyer.full_name %></strong><br>
+                                      <%= r.review %>
+                                  </p>
+                                  <small><%= time_ago_in_words(r.created_at) %></small>
+                              </div>
+                          </div>
+
+                          <div class="media-right">
+                              <span class="star-review"><i class="fa fa-star"></i> <%= r.stars %></span>
+                          </div>
+
+                      </article>
+                    <% end %>
                   </div>
                 </div>
             </div>

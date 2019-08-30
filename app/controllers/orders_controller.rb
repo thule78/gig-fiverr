@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
 
     end
 
-    amount = pricing.price * (rate + 1)
+    amount = pricing.price * (@rate + 1)
 
 
 

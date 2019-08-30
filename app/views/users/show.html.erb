@@ -142,7 +142,7 @@
                   </div>
                   <div class="card-content">
                     <!--sample reviews-->
-                    <% Review.where(params[:user_id]).each do |r| %>
+                    <% @reviews.each do |r| %>
                       <article class="media">
                           <figure class="media-left">
                               <p class="image is-64x64">

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @reviews = Review.where(seller_id: params[:id]).order("created_at desc")
 
   end
 
@@ -145,10 +146,6 @@ class UsersController < ApplicationController
     end
     return redirect_to request.referrer, alert: "Can not cancelyour subscription contact admin"
 
-  end
-
-  def reviews
-    @reviews = Review.where(params[:user_id])
   end
 
   private

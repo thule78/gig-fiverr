@@ -1,6 +1,6 @@
 <nav class="navbar has-shadow" style="z-index: 2">
   <div class="container">
-    <div class="navbar">
+    <div class="navbar-menu" id="navbarBasicExample">
       <% @categories.each do |item| %>
         <%= link_to "#{item.name}", search_path(category: item.id), class: "navbar-item"%>
       <%end%>
